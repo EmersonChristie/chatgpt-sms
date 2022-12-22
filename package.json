@@ -1,0 +1,29 @@
+{
+  "name": "chatgpt-sms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "init-ngrok": "ngrok http --hostname=ai.emersoncontemporary.art 3000",
+    "kill-ngrok": "killall ngrok",
+    "init-twilio": "twilio phone-numbers:update +18316619295 --sms-url=https://ai.emersoncontemporary.art/bot"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "openai": "^3.1.0",
+    "twilio": "^3.84.0"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
+  }
+}
