@@ -22,4 +22,4 @@ jobs:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
         run: |
           npm run build
-          scp -o StrictHostKeyChecking=no -r build/ root@<DROPLET_IP>:/var/www/html
+          scp -o StrictHostKeyChecking=no -r build/ root@143.198.137.162:/var/www/html
