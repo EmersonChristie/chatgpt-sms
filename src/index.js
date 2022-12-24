@@ -27,7 +27,7 @@ app.use(errorHandler);
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
+// Initialize the OpenAI API
 const openai = new OpenAIApi(configuration);
 
 // Twilio SMS webhook
