@@ -8,6 +8,7 @@ const { logErrors, errorHandler } = require("./utils");
 const app = express();
 const port = "3000";
 
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
