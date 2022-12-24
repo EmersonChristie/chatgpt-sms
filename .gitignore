@@ -1,2 +1,33 @@
+# Log files
+*.log
+
+# Dependency directories
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Test files
+*.spec.js
+*.test.js
+
+# Coverage reports
+coverage/
+
+# Local environment files
 .env
-node_modules
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
+    "start": "pm2 start src/index.js --name chatgpt-sms",
+    "stop": "pm2 stop chatgpt-sms",
     "build": "babel src --out-dir dist --copy-files",
     "dev": "nodemon index.js",
     "init-ngrok": "ngrok http --hostname=ai.emersoncontemporary.art 3000",
