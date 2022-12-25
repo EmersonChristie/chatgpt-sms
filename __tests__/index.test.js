@@ -5,6 +5,7 @@ beforeAll((done) => {
   done();
 });
 
+// Test the welcome message
 test("should return a welcome message", async () => {
   const response = await request(app).post("/bot").send({ Body: "Hello" });
   expect(response.statusCode).toBe(200);
