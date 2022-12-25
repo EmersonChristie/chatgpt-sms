@@ -11,7 +11,7 @@
     "dev": "nodemon index.js",
     "init-ngrok": "ngrok http --hostname=ai.emersoncontemporary.art 3000",
     "kill-ngrok": "killall ngrok",
-    "init-twilio": "twilio phone-numbers:update +18316619295 --sms-url=https://ai.emersoncontemporary.art/bot"
+    "init-twilio": "twilio phone-numbers:update +18316619295 --sms-url=https://api.emersoncontemporary.art/bot"
   },
   "keywords": [],
   "author": "",

@@ -1,27 +1,45 @@
-name: Deploy
+name: Node Github CI
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x, 14.x]
+
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm test
-      - name: Build and deploy
-        env:
-          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and test
         run: |
-          npm run build
-          scp -o StrictHostKeyChecking=no -r build/ root@143.198.137.162:/var/www/html
-      - name: Start app with pm2
-        run: pm2 start src/index.js --name chatgpt-sms
+          npm install
+          npm test
+        env:
+          CI: true
+
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH and deploy node app
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/chatgpt-sms
+            git pull origin master
+            npm install --production
+            pm2 restart chatgpt-sms
