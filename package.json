@@ -9,9 +9,9 @@
     "stop": "pm2 stop chatgpt-sms",
     "build": "babel src --out-dir dist --copy-files",
     "dev": "nodemon index.js",
-    "init-ngrok": "ngrok http --hostname=ai.emersoncontemporary.art 3000",
-    "kill-ngrok": "killall ngrok",
-    "init-twilio": "twilio phone-numbers:update +18316619295 --sms-url=https://api.emersoncontemporary.art/bot"
+    "init-ngrok": "ngrok http --hostname=ai.emersoncontemporary.art 3000 && pm2 start src/index.js --name chatgpt-sms",
+    "kill-ngrok": "pm2 stop chatgpt-sms && killall ngrok",
+    "init-twilio": "twilio phone-numbers:update +18316619295 --sms-url=https://ai.emersoncontemporary.art/bot"
   },
   "keywords": [],
   "author": "",

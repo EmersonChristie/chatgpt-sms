@@ -36,4 +36,4 @@ jobs:
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SSH_KEY }}"
-          scp -o StrictHostKeyChecking=no -r -P 3000 my-repo emerson@143.198.137.162:/home/emerson
+          scp -o StrictHostKeyChecking=no -r -P 8080 my-repo emerson@143.198.137.162:/home/emerson
