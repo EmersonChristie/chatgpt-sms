@@ -6,7 +6,7 @@ const { MessagingResponse } = require("twilio").twiml;
 const { logErrors, errorHandler } = require("./utils");
 
 const app = express();
-const port = "3000";
+const port = "80";
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
