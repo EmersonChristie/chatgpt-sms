@@ -31,6 +31,11 @@ const configuration = new Configuration({
 // Initialize the OpenAI API
 const openai = new OpenAIApi(configuration);
 
+// Hello World route
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 // Twilio SMS webhook
 app.post("/bot", async (req, res) => {
   const twiml = new MessagingResponse();
